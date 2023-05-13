@@ -1,7 +1,7 @@
 # **Superhero Hunter App**
 A Superhero Hunter App built using HTML, CSS & vanilla JavaScript. No libraries or frameworks used. This project illustrates the use of Marvel API.
 
-## [**Live Demo**]()
+## [**Live Demo**](https://priyanka-agrawal2022.github.io/SuperheroHunterApp/)
 ### **Features** 
 [**Home Page**](/index.html)
 - Fetch and display a list of SuperHeros (Characters) on the home page. Also create a search bar that will filter out the character based on search query. Suppose I type “bat” in the search box, it should show “batman”. 
