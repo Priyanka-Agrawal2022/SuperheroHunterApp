@@ -1,0 +1,115 @@
+*{
+    padding: 0;
+    margin: 0;    
+}
+
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(48, 37, 37);
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+}
+
+nav {
+    height: 70px;
+    margin: 25px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(100, 4, 4);
+    border-radius: 10px;
+}
+
+nav a button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100px;
+    margin: 0 10px;
+    border: 2px solid black;
+    border-radius: 20px; 
+    background-color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+nav a button:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+}
+
+#superhero-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 3rem;
+}
+
+.superhero-photo {
+    height: 50%;
+    width: 50%;
+    max-height: 400px;
+    max-width: 400px;
+    border: 2px solid white;
+    border-radius: 20px;
+    margin-right: 15px;
+}
+
+.superhero-photo img {
+    height: 100%;
+    width: 100%;
+    object-fit: inherit;
+    border-radius: 20px;
+}
+
+.superhero-info {
+    width: 50%;
+    text-align: center;
+    margin-left: 15px;
+}
+
+.name {
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin: 0 0 20px; 
+}
+
+.bio {
+    text-align: left;
+}
+
+ul {
+    padding-left: 0;
+    text-align: left;
+}
+
+ul li {
+    margin-left: 20px;
+}
+
+h3 {
+    width: 100px;
+    text-align: center;
+    margin: 30px 0 10px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+footer {
+    margin: 5rem 2rem 1rem;
+}
