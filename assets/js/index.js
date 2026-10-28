@@ -1,14 +1,10 @@
 const searchBar = document.getElementById('search-bar');
 const searchButton = document.getElementById('search-btn');
 const resultContainer = document.getElementById('result-container');
-const footer = document.getElementsByTagName('footer');
-const marvelAPI = `https://gateway.marvel.com/v1/public/characters?ts=1&apikey=024dabc917ae9e01df3a604483201356&hash=e52caaa2c18b4119aac2f302e89b5a51`;
+const superheroAPI = `https://www.superheroapi.com/api.php/${ACCESS_TOKEN}/search/a`;
 
-// var MD5 = require('crypto-js/md5');
-// console.log(MD5("text to hash").toString());
-
-// fetch data from Marvel API
-function fetchMarvelAPI(url) {
+// fetch data from Superhero API
+function fetchSuperheroAPI(url) {
     try {
         fetch(url)
             .then((response) => response.json())
@@ -18,38 +14,36 @@ function fetchMarvelAPI(url) {
     }
 }
 
-fetchMarvelAPI(marvelAPI);
+fetchSuperheroAPI(superheroAPI);
 
-// load all superheroes from Marvel API
+// load all superheroes from Superhero API
 function fetchAllSuperheroes(data) {
-    let results = data.data.results;
+    let results = data.results;
 
-    if (results.length != 0) {
+    if (results && results.length != 0) {
         resultContainer.innerHTML = '';
 
         for (r of results) {
             let superheroCard = document.createElement('div');
             superheroCard.setAttribute('class', 'superhero-card');
             superheroCard.innerHTML = `
-                <a href="./superhero.html?id=${r.id}" target="_blank">
+                <a href="./superhero.html" onclick="sessionStorage.setItem('characterID', '${r.id}')">
                     <div class="superhero-photo">
-                        <img src="${r.thumbnail.path}.${r.thumbnail.extension}" alt="Superhero Image" />
+                        <img src="${r.image.url}" alt="Superhero Image" />
                     </div>
                 </a>
 
                 <div class="bottom">
                     <div class="superhero-name">${r.name}</div>
-                    <div id="${r.id}" class="fav-icon" onclick="addToFavorites(${r.id}, '${r.name}', '${r.thumbnail.path}', '${r.thumbnail.extension}')">
+                    <div id="${r.id}" class="fav-icon" onclick="addToFavorites(${r.id}, '${r.name}', '${r.image.url}')">
                         <i class="fa-solid fa-heart"></i>
                     </div>
                 </div>
             `;
 
             resultContainer.appendChild(superheroCard);
-
-            footer[0].innerHTML = data.attributionHTML;
-
         }
+
     }
     else {
         resultContainer.innerHTML = '<h1>No results found! Please try other keywords...</h1>';
@@ -70,11 +64,11 @@ function showResults() {
     let searchTerm = searchBar.value;
     let oldSearchTerm = "";
     // run only if search bar's value changes
-    // this will reduce the overhead caused by multiple calls to fetch same information on page 
+    // this will reduce the overhead caused by multiple calls to fetch same information on page
 
     if(oldSearchTerm != searchTerm) {
         if(searchTerm) {
-            fetchMarvelAPI(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${searchTerm}&ts=1&apikey=024dabc917ae9e01df3a604483201356&hash=e52caaa2c18b4119aac2f302e89b5a51`);
+            fetchSuperheroAPI(`https://www.superheroapi.com/api.php/${ACCESS_TOKEN}/search/${searchTerm}`);
             oldSearchTerm = searchTerm;
         }
         else {
@@ -84,7 +78,7 @@ function showResults() {
 }
 
 // add superhero to Favorites tab when fav-icon is clicked
-function addToFavorites(id, name, path, extension) {
+function addToFavorites(id, name, imageUrl) {
     let favIcon = document.getElementById(id);
     let icon = favIcon.getElementsByTagName('i');
 
@@ -92,8 +86,7 @@ function addToFavorites(id, name, path, extension) {
         let obj = {
             "id": id,
             "name": name,
-            "thumbPath": path,
-            "thumbExtension": extension
+            "imageUrl": imageUrl
         };
 
         localStorage.setItem(id, JSON.stringify(obj));

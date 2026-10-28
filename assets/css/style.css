@@ -19,6 +19,7 @@ img {
 }
 
 h1 {
+    font-size: 24px;
     text-align: center;
 }
 
@@ -152,8 +153,4 @@ nav a button:hover {
 
 .liked {
     color: rgb(213, 42, 42);
-}
-
-footer {
-    margin: 5rem 2rem 1rem;
 }

@@ -14,6 +14,7 @@ a {
 }
 
 h1 {
+    font-size: 24px;
     text-align: center;
 }
 
@@ -77,8 +78,6 @@ nav a button:hover {
 }
 
 .name {
-    width: 100%;
-    padding: 10px 20px;
     text-align: center;
     background-color: black;
     color: white;
@@ -101,7 +100,6 @@ ul li {
 }
 
 h3 {
-    width: 100px;
     text-align: center;
     margin: 30px 0 10px;
     background-color: black;
@@ -110,6 +108,20 @@ h3 {
     border-radius: 10px;
 }
 
-footer {
-    margin: 5rem 2rem 1rem;
+@media screen and (max-width: 576px) {
+    #superhero-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .superhero-photo {
+        height: auto;
+        width: 100%;
+    }
+
+    .superhero-info {
+        width: 100%;
+        margin-left: 0;
+    }
 }

@@ -13,14 +13,21 @@ function fetchFavorites() {
                 break;
             }
 
-            let r = JSON.parse(localStorage.getItem(d));
+            let r;
+            try {
+                r = JSON.parse(localStorage.getItem(d));
+            } catch(e) {
+                continue;
+            }
+            if (!r || !r.id) continue;
+
             let superheroCard = document.createElement('div');
             superheroCard.setAttribute('class', 'superhero-card');
             superheroCard.setAttribute('id', '${r.id}');
             superheroCard.innerHTML = `
-                <a href="./superhero.html?id=${r.id}" target="_blank">
+                <a href="./superhero.html" onclick="sessionStorage.setItem('characterID', '${r.id}')">
                     <div class="superhero-photo">
-                        <img src="${r.thumbPath}.${r.thumbExtension}" alt="Superhero Image" />
+                        <img src="${r.imageUrl}" alt="Superhero Image" />
                     </div>
                 </a>
 

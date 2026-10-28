@@ -23,7 +23,7 @@
 
         <!-- search container -->
         <div id="search-div">
-            <input type="text" id="search-bar" placeholder="Search superhero here..." required>
+            <input type="text" id="search-bar" placeholder="Search superhero here..." required onkeydown="if(event.key === 'Enter') showResults()" oninput="if(!this.value) fetchSuperheroAPI(superheroAPI)">
             <button onclick="showResults()" type="submit" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <!-- end of search container -->
@@ -34,8 +34,7 @@
         </div>
         <!-- end of result container -->
 
-        <footer></footer>
-
+        <script src="./config.js"></script>
         <script src="./assets/js/index.js"></script>
     </body>
 </html>
