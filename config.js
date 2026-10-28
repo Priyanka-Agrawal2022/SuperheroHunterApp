@@ -1,0 +1,1 @@
+const ACCESS_TOKEN = '663888d1a9b2333c41805dbb7de9e32d'; // Replace with your token from superheroapi.com
